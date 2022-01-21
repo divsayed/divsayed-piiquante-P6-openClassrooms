@@ -1,9 +1,9 @@
 
-const bcrypt = require('bcrypt'); //crypter le mot de passe
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');    //bcrypter pour hash le mot de passe des utilisateurs
+const jwt = require('jsonwebtoken'); //token de connection à l'application
 const User = require('../models/User');
 
-//Création d'un compte utilisateur 
+//Création d'un compte utilisateur et crypte son mot de passe 
 exports.signup = (req, res, next) =>{
     //hash du mot de passe
     bcrypt.hash(req.body.password, 10)
@@ -30,7 +30,7 @@ exports.login = (req, res, next) => {
           .then(valid => {
             if (!valid) {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
-            } 
+            }
             res.status(200).json({
               userId: User._id,
               token: jwt.sign(
