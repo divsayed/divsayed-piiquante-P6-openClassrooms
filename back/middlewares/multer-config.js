@@ -9,7 +9,7 @@ const MIME_TYPES = {
 //préciser à multer où enregistrer les fichiers images et les renommer
 const storage = multer.diskStorage({
     destination: (req, file, callback) => { 
-        callback(null, 'images')
+        callback(null, 'images');
     },
     filename: (req, file, callback) => {
         //// On génère un nouveau nom avec le nom d'origine
