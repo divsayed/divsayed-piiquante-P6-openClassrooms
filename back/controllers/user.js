@@ -12,7 +12,7 @@ exports.signup = (req, res, next) =>{
                 email: req.body.email,
                 password: hash
             });
-           // console.log(req.body.email)
+           //console.log(req.body.email)
            //console.log(req.body.password)
             user.save()
             .then(() => res.status(201).json({message: 'Utilisateur créé !'}))

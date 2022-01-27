@@ -1,7 +1,7 @@
 const express = require('express');    // Importation d'express => Framework basé sur node.js
 const mongoose = require('mongoose');  // Plugin Mongoose pour se connecter à la base de données Mongo Db
-const path = require('path');         
-
+const path = require('path');          // Plugin de téléchargement des images et permet de travailler avec les répertoires et chemin de fichier      
+const helmet = require('helmet')       // module 'helmet' pour la sécurité en protégeant l'application de certaines vulnérabilités
 
 //importation des routes user et sauces
 const userRoutes = require('./routes/user');
@@ -26,9 +26,12 @@ app.use((req, res, next) => {
 // Middleware qui permet acceder au corps de la requête envoyées grâce à req.body
 app.use(express.json());
  
-
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', saucesRoutes);
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
+
 
 //Midleware qui permet de charger les fichiers qui sont dans le repertoire images
 app.use('/images', express.static(path.join(__dirname, 'images')));

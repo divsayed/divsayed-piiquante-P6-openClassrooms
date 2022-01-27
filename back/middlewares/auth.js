@@ -1,4 +1,4 @@
-//middleware d'authentification : vérifier que l'utilisateur est authentifié et protége les routes
+//middleware d'authentification : vérifier que l'utilisateur est authentifié avant d'autoriser l'envoi de ses requêtes et protége les routes
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
