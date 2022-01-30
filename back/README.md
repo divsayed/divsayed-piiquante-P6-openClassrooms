@@ -1,5 +1,6 @@
 Projet 6 - Construisez une API sécurisée pour une application d'avis gastronomiques "PIIQUANTE", dans laquelle les utilisateurs peuvent ajouter leurs sauces préférées et liker ou disliker les sauces ajoutées par les autres.
 
+
  Nous installons tous les modules nécéssaires au backend  :
  -------------------------------------------------------
  1- Node.js => pour construire le backend 
