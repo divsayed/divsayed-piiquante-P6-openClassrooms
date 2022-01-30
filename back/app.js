@@ -6,11 +6,13 @@ const helmet = require('helmet')       // module 'helmet' pour la sécurité en 
 //importation des routes user et sauces
 const userRoutes = require('./routes/user');
 const saucesRoutes = require('./routes/sauces')
+const dotenv = require('dotenv');// .env pour cacher le mot de passe de la connexion à MongoDB
+const result = dotenv.config();//
 
 const app = express();               // Création d'une application express
 
 //connexion  à la base de données Mongo Db
-mongoose.connect('mongodb+srv://sayed38:B4512H1kdRb1rFKB@cluster0.etcuz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.etcuz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
